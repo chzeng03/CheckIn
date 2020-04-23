@@ -102,16 +102,17 @@ loginForm.addEventListener('submit', (e) => {
     const password = loginForm['Login-password'].value
 
     auth.signInWithEmailAndPassword(email, password).then(cred => {
-         const modal = document.querySelector('#modal-login');
+        const modal = document.querySelector('#modal-login');
         M.Modal.getInstance(modal).close();      
         loginForm.reset();
-        
-          console.log(cred, "signIn");
+            
+        console.log(cred, "signIn");
     }).catch(function (error) {
         const errorCode = error.code;
         const errorMessage = error.message;
         alert(errorMessage);
         console.log(errorCode);
+
             
     })
 })
