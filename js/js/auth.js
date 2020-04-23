@@ -26,7 +26,8 @@ createForm.addEventListener('submit', (e) => {
 
         Name: createForm['eventtitle'].value,
         Time: createForm['eventtime'].value,
-        Location: createForm['eventlocation'].value
+        Location: createForm['eventlocation'].value,
+        Organization: createForm['eventholder'].value
         
     }).then(() => {
 
@@ -35,7 +36,6 @@ createForm.addEventListener('submit', (e) => {
         createForm.reset();
     });
 });
-
 
 //signup
 const signupForm = document.querySelector('#Signup-form');
