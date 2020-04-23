@@ -4,6 +4,7 @@ auth.onAuthStateChanged(user => {
         db.collection('Events').get().then(snapshot => {
             setupEvents(snapshot.docs);
             setupUI(user);
+            alert("You have been logged in!");
         });
 
     } else {
@@ -84,6 +85,7 @@ const logout = document.querySelector('#logout');
 logout.addEventListener('click', (e) => {
     e.preventDefault();
     auth.signOut();
+    alert("Uou have been signed out");
 });
 
 
