@@ -1,10 +1,17 @@
 const eventlist = document.querySelector('.Events');
 const loggedoutlinks = document.querySelectorAll('.logged-out');
 const loggedinlinks = document.querySelectorAll('.logged-in');
+const accountdetails = document.querySelector('.account-details');
 
 const setupUI = (user) => {
     if (user) {
+        db.collection('users').doc(user,uid).get().then(doc =>{
+            const html2 = `
+            <div> Logged in as ${user.email}</div>
 
+           `;
+            accountdetails.innerHTML = html2;
+        })
         loggedinlinks.forEach(item => item.style.display = 'block');
         loggedoutlinks.forEach(item => item.style.display = 'none');
 
