@@ -10,7 +10,7 @@ auth.onAuthStateChanged(user => {
     } else {
         setupUI();
         setupEvents([]);
-        alert("Email or password invalid");
+        
      
     }
 });
