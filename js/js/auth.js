@@ -85,7 +85,7 @@ const logout = document.querySelector('#logout');
 logout.addEventListener('click', (e) => {
     e.preventDefault();
     auth.signOut();
-    alert("Uou have been signed out");
+    alert("You have been signed out");
 });
 
 
