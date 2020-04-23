@@ -5,13 +5,15 @@ const accountdetails = document.querySelector('.account-details');
 
 const setupUI = (user) => {
     if (user) {
-        db.collection('users').doc(user,uid).get().then(doc =>{
-            const html2 = `
+        db.collection('users').doc(user.uid).get().then(doc =>{
+            const html1 = `
             <div> Logged in as ${user.email}</div>
-
-           `;
-            accountdetails.innerHTML = html2;
+            
+        
+        `;
+        accountdetails.innerHTML = html1; 
         })
+        
         loggedinlinks.forEach(item => item.style.display = 'block');
         loggedoutlinks.forEach(item => item.style.display = 'none');
 
@@ -31,7 +33,7 @@ const setupEvents = (data) => {
  
         const li = `
             <li>
-             <div class="collapsible-header grey lighten-4" style="font-weight:bold">${event.Organization} : ${event.Name}</div>
+                <div class="collapsible-header grey lighten-4" style="font-weight:bold">${event.Name}</div>
                 <div class="collapsible-body white">${event.Time} at ${event.Location}</div>
             </li>
             `;
