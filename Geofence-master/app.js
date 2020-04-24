@@ -41,9 +41,9 @@ app.init = function () {
 
     localStorage.setItem(app.geodataID, txt);
 
-    
-    app.pt = [41.1456, -81.3393];;
-    
+    // Mississauga (Buckhorn and Tahoe) Campus
+    app.pt = [43.639933, -79.608959];
+   
 
     app.map = L.map('map').setView(app.pt, 15);
 
@@ -293,30 +293,14 @@ app.checkGeoFence = function (lat, lng, timestamp) {
     
 
     if (res.length === 0 || res === false) {
-        status = 'Ypu are not in the right area!';
+        status = 'You are not in the right location!';
         statusColor = 'red';
         
     }
 
     document.getElementById('stat_geofence').innerHTML = '<span style="color: ' + statusColor + '">' + status + '</span>';
 
-    if (status !== app.lastStatus) {
-        // Play sound
-        document.getElementById('snd').pause();
-        document.getElementById('snd').src = sndFile;
-        document.getElementById('snd').play();
-
-        // Send alert text
-        var jsonStr = '{';
-        jsonStr += 'id:' + 'demo' + ',';
-        jsonStr += 'timestamp:' + timestamp.getTime() + ',';
-        jsonStr += 'status:' + status + ',';
-        jsonStr += 'latitude:' + lat + ',';
-        jsonStr += 'longitude:' + lng + '';
-        jsonStr += '}';
-
-        app.sendAlert(jsonStr);
-    }
+    
 
     console.log(status);
     return status;
