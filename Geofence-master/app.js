@@ -41,8 +41,8 @@ app.init = function () {
 
     localStorage.setItem(app.geodataID, txt);
 
-    // Mississauga (Buckhorn and Tahoe) Campus
-    app.pt = [43.639933, -79.608959];
+    
+    app.pt = [41.147889, -81.342022]];
    
 
     app.map = L.map('map').setView(app.pt, 15);
