@@ -42,7 +42,7 @@ app.init = function () {
     localStorage.setItem(app.geodataID, txt);
 
     
-    app.pt = [41.147889, -81.342022]];
+    app.pt = [41.147889, -81.342022];
    
 
     app.map = L.map('map').setView(app.pt, 15);
