@@ -37,56 +37,13 @@ app.init = function () {
         debug: false
     });
 
-    var txt = 'DateTime,Latitude,Longitude,Accuracy,Heading,Speed,Distance,Altitude,Geofence' + "\n";
+    var txt = 'DateTimeading,Speed,Distance,Altitude,Geofence' + "\n";
 
     localStorage.setItem(app.geodataID, txt);
 
     // Mississauga (Buckhorn and Tahoe) Campus
-    app.pt = [43.639933, -79.608959];
-    app.pts = [
-        [43.644631, -79.610453],
-        [43.644290, -79.609884],
-        [43.644189, -79.609766],
-        [43.644034, -79.609605],
-        [43.643886, -79.609498],
-        [43.643731, -79.609390],
-        [43.643374, -79.609219],
-        [43.643211, -79.609101],
-        [43.643055, -79.608951],
-        [43.642838, -79.608639],
-        [43.642659, -79.608296],
-        [43.642504, -79.607824],
-        [43.642434, -79.607416],
-        [43.642395, -79.606998],
-        [43.642333, -79.606622],
-        [43.642201, -79.606279],
-        [43.642046, -79.606032],
-        [43.641875, -79.605861],
-        [43.641650, -79.605721],
-        [43.641394, -79.605668],
-        [43.641208, -79.605689],
-        [43.640998, -79.605764],
-        [43.640796, -79.605914],
-        [43.640641, -79.606075],
-        [43.640516, -79.606279],
-        [43.640408, -79.606547],
-        [43.640338, -79.606891],
-        [43.640097, -79.606655],
-        [43.639235, -79.605206],
-        [43.638987, -79.605056],
-        [43.637473, -79.606966],
-        [43.637814, -79.607320],
-        [43.637900, -79.607491],
-        [43.637962, -79.607695],
-        [43.637970, -79.607899],
-        [43.637939, -79.608092],
-        [43.637884, -79.608253],
-        [43.637566, -79.608704],
-        [43.638933, -79.610935],
-        [43.641044, -79.614036],
-        [43.641386, -79.614176]
-    ];
-
+    app.pt = [41.1456, -81.3393];
+    
     app.map = L.map('map').setView(app.pt, 15);
 
 /*
@@ -330,14 +287,14 @@ app.checkGeoFence = function (lat, lng, timestamp) {
     var gjLayer = L.geoJson(app.polygon.toGeoJSON());
     res = leafletPip.pointInLayer([lng, lat], gjLayer);
 
-    var status = 'inside';
+    var status = 'CheckedIn!';
     var statusColor = 'green';
-    var sndFile = 'sfx/female_hello.mp3';
+    
 
     if (res.length === 0 || res === false) {
-        status = 'outside';
+        status = 'You are not in the right location!';
         statusColor = 'red';
-        sndFile = 'sfx/female_goodbye.mp3';
+        
     }
 
     document.getElementById('stat_geofence').innerHTML = '<span style="color: ' + statusColor + '">' + status + '</span>';
@@ -485,14 +442,8 @@ app.handleWatch = function (position) {
     var elapsedTime = app.msToTime(timestamp - app.startTime);
 
     document.getElementById('stat_timestamp').innerHTML = ts;
-    document.getElementById('stat_latitude').innerHTML = lat;
-    document.getElementById('stat_longitude').innerHTML = lng;
-    document.getElementById('stat_speed').innerHTML = speed_km;
-    document.getElementById('stat_distance').innerHTML = distance;
-    document.getElementById('stat_altitude').innerHTML = altitude;
-    document.getElementById('stat_heading').innerHTML = heading;
-    document.getElementById('stat_accuracy').innerHTML = accuracy;
-    document.getElementById('stat_elapsed').innerHTML = elapsedTime;
+    
+   
 
     // Adjust zoom level based on speed
     if (speed === 0) {
